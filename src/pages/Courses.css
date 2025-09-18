@@ -1,0 +1,106 @@
+/* src/pages/Courses.css */
+.courses-page {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.courses-hero {
+  margin-bottom: 3rem;
+}
+
+.hero-icon {
+  font-size: 4rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.courses-hero h1 {
+  font-size: 2.8rem;
+  color: white;
+  margin: 0;
+}
+
+.courses-hero p {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.semesters-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+.semester-item {
+  width: 100%;
+  max-width: 400px;
+}
+
+.semester-button {
+  width: 100%;
+  background: #ffdd57;
+  color: #1e3c72;
+  padding: 15px;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.semester-button:hover {
+  background: #f7d046;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.semester-button.active {
+  border-color: #fff;
+  background: #f7b600;
+}
+
+.dropdown-menu {
+  background: rgba(255, 255, 255, 0.95);
+  margin-top: 8px;
+  border-radius: 10px;
+  padding: 10px;
+  animation: fadeIn 0.3s ease;
+}
+
+.dropdown-link {
+  display: block;
+  padding: 12px 15px;
+  color: #1e3c72;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 8px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.dropdown-link:hover {
+  background-color: #1e3c72;
+  color: #ffdd57;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+/* في نهاية Courses.css */
+.page-loader, .page-error {
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.no-specializations {
+  padding: 10px;
+  color: #64748b;
+  text-align: center;
+}

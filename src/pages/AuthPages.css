@@ -1,0 +1,84 @@
+/* src/pages/AuthPages.css */
+.auth-page-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+}
+
+.auth-card {
+  background: white;
+  color: #333;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 450px;
+  text-align: center;
+}
+
+.auth-card h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.auth-card p {
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.input-group {
+  text-align: right;
+  margin-bottom: 1.5rem;
+}
+
+.input-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.auth-button {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 8px;
+  background-color: #1e3c72;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.auth-button:hover {
+  background-color: #2a5298;
+}
+.auth-button:disabled {
+  background-color: #a0bdf1;
+  cursor: not-allowed;
+}
+
+.error-message {
+  color: #d93025;
+  margin-top: 1rem;
+}
+
+.switch-auth {
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+}
+.switch-auth a {
+  color: #1e3c72;
+  font-weight: bold;
+  text-decoration: none;
+}

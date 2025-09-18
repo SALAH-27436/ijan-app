@@ -1,0 +1,258 @@
+/* src/pages/Lessons.css */
+
+.lessons-page {
+  padding: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  color: #fff;
+}
+
+/* Breadcrumb Navigation */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+}
+.breadcrumb a {
+  color: #ffdd57;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.breadcrumb a:hover {
+  color: #fff;
+}
+.breadcrumb span {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Lesson Hero Header */
+.lesson-hero {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem 1rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+}
+.lesson-hero h1 {
+  font-size: 2.8rem;
+  margin-block-start: 0;
+  margin-block-end: 0.5rem;
+}
+.lesson-hero .subtitle {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.8);
+  max-width: 600px;
+  margin: 0 auto;
+}
+.hero-actions {
+  margin-top: 1.5rem;
+}
+
+/* Main Accordion Container */
+.category-accordion {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Single Category Card */
+.category-card {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  transition: box-shadow 0.3s;
+}
+.category-card:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Category Header (Clickable Button) */
+.category-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 1.5rem;
+  background: transparent;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  text-align: right;
+  transition: background-color 0.2s;
+}
+.category-header:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+.category-header.open {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.header-icon {
+  font-size: 1.5rem;
+}
+.header-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.item-count {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  background: rgba(0, 0, 0, 0.3);
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+.toggle-icon {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ffdd57;
+  transition: transform 0.3s ease;
+}
+.category-header.open .toggle-icon {
+  transform: rotate(45deg);
+}
+
+/* Content inside the Accordion */
+.category-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
+  padding: 0 1.5rem;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.category-content.open {
+  max-height: 1000px; /* Large enough value */
+  padding: 1rem 1.5rem;
+}
+
+.resource-item-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Single Resource Item inside the list */
+.resource-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+.resource-item:first-child {
+  border-top: none;
+}
+
+.item-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-grow: 1; /* للسماح له بأخذ المساحة المتاحة */
+}
+.file-icon {
+  font-size: 2rem;
+}
+.item-title {
+  font-weight: bold;
+  margin: 0;
+}
+.item-description {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0.25rem 0 0 0;
+}
+.item-actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+/* ===== هذا هو الحل الأفضل للتجاوب ===== */
+@media (max-width: 480px) {
+  .resource-item {
+    flex-direction: column; /* اجعل العناصر تحت بعضها البعض */
+    align-items: flex-start; /* محاذاة للبداية */
+  }
+
+  .item-actions {
+    width: 100%; /* اجعل حاوية الأزرار تأخذ العرض كاملًا */
+    margin-top: 1rem; /* مسافة من الأعلى */
+  }
+
+  .item-actions a.btn {
+    flex-grow: 1; /* اجعل كل زر يأخذ نصف المساحة */
+    text-align: center; /* توسيط النص في الزر */
+  }
+}
+
+/* General Buttons (can be moved to App.css) */
+.btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: transform 0.2s, background-color 0.2s;
+  background-color: #ffdd57;
+  color: #1e3c72;
+}
+.btn:hover {
+  transform: translateY(-2px);
+}
+.btn-view {
+  background-color: #4a90e2;
+  color: white;
+}
+.btn-download {
+  background-color: #34495e;
+  color: white;
+}
+.btn-ghost {
+  background: transparent;
+  color: #ffdd57;
+  border: 1px solid #ffdd57;
+}
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 3rem;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+}
+.empty-illustration {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+/* Footer */
+.lessons-footer {
+  margin-top: 3rem;
+  text-align: center;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+.lessons-footer code {
+  background: rgba(0, 0, 0, 0.5);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: #ffdd57;
+}
+/* في نهاية Lessons.css */
+.page-loader, .page-error {
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}

@@ -1,0 +1,116 @@
+// src/App.js (النسخة النهائية والمصححة)
+import React from "react";
+// ===== التصحيح الأول هنا: إضافة Link =====
+import { BrowserRouter as Router, Routes, Route, NavLink, Link, useNavigate } from "react-router-dom";
+// ======================================
+import { useAuth } from "./context/AuthContext";
+import { Home as HomeIcon, BookCopy, GraduationCap, Rocket, Link2, LogOut, User as UserIcon, Users } from 'lucide-react';
+import Home from "./pages/Home";
+import LoginPage from './pages/LoginPage';
+import SignupPage from './pages/SignupPage';
+import Courses from "./pages/Courses";
+import Professors from "./pages/Professors";
+import Links from "./pages/Links";
+import ServicesPage from './pages/ServicesPage';
+import ServiceDetailPage from './pages/ServiceDetailPage';
+import Subjects from "./pages/Subjects";
+import Lessons from "./pages/Lessons";
+import UserProfilePage from './pages/UserProfilePage';
+import SearchUsersPage from './pages/SearchUsersPage';
+import "./App.css";
+
+// --- مكون Navbar الجديد ---
+function Navbar() {
+  const { user, profile, signOut } = useAuth();
+  const navigate = useNavigate();
+
+  const handleSignOut = async () => {
+    await signOut();
+    navigate('/login');
+  };
+
+  const navLinks = [
+    { to: "/", icon: <HomeIcon size={24} />, text: "الرئيسية" },
+    { to: "/courses", icon: <BookCopy size={24} />, text: "الدروس" },
+    { to: "/professors", icon: <GraduationCap size={24} />, text: "الأساتذة" },
+    { to: "/services", icon: <Rocket size={24} />, text: "الخدمات" },
+    { to: "/links", icon: <Link2 size={24} />, text: "روابط" },
+    { to: "/search-users", icon: <Users size={24} />, text: "بحث" },
+  ];
+
+  return (
+    <nav className="main-navbar">
+      <div className="nav-logo">IJAN</div>
+      <div className="nav-links">
+        {navLinks.map(link => (
+          <NavLink to={link.to} key={link.to} className="nav-link-item" end>
+            {link.icon}
+            <span className="link-text">{link.text}</span>
+          </NavLink>
+        ))}
+      </div>
+      <div className="nav-profile-menu">
+        <img src={profile?.avatar_url || '/avatars/default-avatar.png'} alt="Profile" className="profile-avatar" />
+        <div className="profile-dropdown">
+          <div className="dropdown-header">
+            <strong>{profile?.full_name || user?.email}</strong>
+            <small>{user?.email}</small>
+          </div>
+          <Link to={`/profile/${user?.id}`} className="dropdown-item"><UserIcon size={16} /> ملفي الشخصي</Link>
+          <button onClick={handleSignOut} className="dropdown-item logout">
+            <LogOut size={16} />
+            تسجيل الخروج
+          </button>
+        </div>
+      </div>
+    </nav>
+  );
+}
+
+// --- المكون الرئيسي App ---
+function App() {
+  const { session } = useAuth();
+
+  // هذا الجزء يعرض فقط صفحات تسجيل الدخول إذا لم يكن المستخدم مسجلاً
+  if (!session) {
+    return (
+      <Router>
+        <Routes>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignupPage />} />
+          {/* أي رابط آخر سيقوم بإعادة التوجيه إلى تسجيل الدخول */}
+          <Route path="*" element={<LoginPage />} />
+        </Routes>
+      </Router>
+    );
+  }
+
+  // هذا الجزء يعرض التطبيق الكامل إذا كان المستخدم مسجلاً دخوله
+  return (
+    <Router>
+      <div className="app-layout">
+        <Navbar />
+        <main className="main-content-area">
+          <Routes>
+            {/* ===== التصحيح الثاني هنا: إزالة المسارات المكررة وغير الضرورية ===== */}
+            <Route path="/" element={<Home />} />
+            <Route path="/profile/:userId" element={<UserProfilePage />} />
+            <Route path="/courses" element={<Courses />} />
+            <Route path="/professors" element={<Professors />} />
+            <Route path="/links" element={<Links />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/services/:id" element={<ServiceDetailPage />} />
+            <Route path="/courses/:semester/:type" element={<Subjects />} />
+            <Route path="/courses/:semester/:type/:subjectSlug" element={<Lessons />} />
+            <Route path="/search-users" element={<SearchUsersPage />} />
+            {/* المسارات التالية غير ضرورية لأن `if (!session)` يعالجها */}
+            {/* <Route path="/login" element={<LoginPage />} /> */}
+            {/* <Route path="/signup" element={<SignupPage />} /> */}
+          </Routes>
+        </main>
+      </div>
+    </Router>
+  );
+}
+
+export default App;

@@ -1,0 +1,153 @@
+/* src/pages/Links.css */
+.links-page {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: #fff;
+}
+
+.links-hero {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, #4F46E5, #A855F7); /* بنفسجي وأزرق */
+  border-radius: 20px;
+}
+.links-hero h1 {
+  font-size: 2.8rem;
+  margin: 0;
+}
+.links-hero p {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-top: 0.5rem;
+}
+
+/* --- شريط البحث --- */
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+.search-bar { /* reusing style from Professors.css */
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+}
+.search-bar input {
+  width: 90%;
+  padding: 14px 40px 14px 5px;
+  border-radius: 30px;
+  border: 2px solid rgb(255, 255, 255);
+  background: rgba(0, 0, 0, 0.2);
+  color: #fff;
+  font-size: 1rem;
+}
+.search-bar input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+.search-icon {
+  position: absolute;
+  right: 540px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* --- أقسام الفئات --- */
+.category-section {
+  margin-bottom: 3rem;
+}
+.category-title {
+  font-size: 1.8rem;
+  padding-right: 1rem;
+  border-right: 4px solid #ffdd57;
+  margin-bottom: 1.5rem;
+}
+
+/* --- شبكة البطاقات --- */
+.links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+/* --- تصميم البطاقة الواحدة --- */
+.link-card {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.link-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.card-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+.card-title {
+  font-size: 1.3rem;
+  margin: 0 0 0.5rem 0;
+}
+.card-description {
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.8);
+  flex-grow: 1; /* Pushes button to the bottom */
+  margin-bottom: 1.5rem;
+}
+.card-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  background-color: #ffdd57;
+  color: #1e3c72;
+  padding: 12px 20px;
+  border-radius: 25px;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+.card-button:hover {
+  background-color: #f7b600;
+}
+.card-button span {
+  font-family: 'Tahoma', sans-serif;
+}
+
+.no-results {
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 2rem;
+  width: 100%;
+}
+
+/* --- Footer --- */
+.links-footer {
+  text-align: center;
+  margin-top: 4rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 2rem;
+}
+.cta-text {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+.joke-text {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.9rem;
+}
+/* في نهاية Links.css */
+.loading-text {
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 3rem;
+  color: #fff;
+}

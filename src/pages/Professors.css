@@ -1,0 +1,226 @@
+/* src/pages/Professors.css */
+.professors-page {
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  color: #fff;
+}
+
+.professors-hero {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+.professors-hero h1 {
+  font-size: 2.8rem;
+}
+.professors-hero p {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* --- أدوات البحث والفلترة --- */
+.filters-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.5rem;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.search-bar {
+  position: relative;
+  flex-grow: 1;
+}
+.search-bar input {
+  width: 100%;
+  padding: 12px 5px 12px 4px;
+  border-radius: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.2);
+  color: #fff;
+  font-size: 1rem;
+}
+.search-bar input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+.search-icon {
+  position: absolute;
+  right: 900px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.department-filter {
+  display: flex;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 5px;
+  border-radius: 25px;
+}
+.department-filter button {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  padding: 8px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+.department-filter button.active {
+  background: #ffdd57;
+  color: #1e3c72;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* --- شبكة البطاقات --- */
+.professors-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/* --- تصميم البطاقة الواحدة --- */
+.professor-card {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.professor-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.card-header {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 4px solid #ffdd57;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 20px;
+  flex-grow: 1;
+  text-align: center;
+}
+.prof-name {
+  font-size: 1.5rem;
+  margin: 0 0 5px 0;
+}
+.prof-title {
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0 0 10px 0;
+}
+.prof-specialty {
+  display: inline-block;
+  background: #ffdd57;
+  color: #1e3c72;
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+.prof-bio {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 1.5rem;
+}
+
+.exam-style-box {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 15px;
+  text-align: right;
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+}
+.exam-style-box .icon {
+  color: #ffdd57;
+  flex-shrink: 0; /* Prevents icon from shrinking */
+}
+.exam-style-box strong {
+  display: block;
+  margin-bottom: 5px;
+}
+.exam-style-box p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.card-footer {
+  padding: 15px 20px;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  background-color: #3b82f6; /* Blue color */
+  color: white;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-weight: bold;
+  transition: background-color 0.2s;
+}
+.contact-link:hover {
+  background-color: #2563eb;
+}
+
+.no-results {
+  grid-column: 1 / -1; /* Span across all columns */
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 2rem;
+}
+/* في نهاية Professors.css */
+
+/* استبدال رابط التواصل بمعلومة مفيدة */
+.card-footer {
+  padding: 15px 20px;
+  background-color: rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #a7f3d0; /* لون أخضر فاتح */
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+
+/* حالة التحميل والنتائج الفارغة */
+.loading-text, .no-results {
+  grid-column: 1 / -1; /* تجعل النص يمتد على كل الأعمدة */
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 2rem;
+  color: #fff;
+}

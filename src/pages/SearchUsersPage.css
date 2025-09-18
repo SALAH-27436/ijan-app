@@ -1,0 +1,84 @@
+/* src/pages/SearchUsersPage.css */
+.search-page-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  color: #fff;
+}
+
+.search-hero {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+.search-hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+.search-hero p {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 2rem;
+}
+
+.search-input-container {
+  position: relative;
+}
+.search-input-container input {
+  width: 86%;
+  padding: 15px 20px 15px 50px; /* مساحة للأيقونة على اليسار */
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.2);
+  color: #fff;
+  font-size: 1.1rem;
+}
+.search-page-icon {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.results-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.user-card-link {
+  text-decoration: none;
+}
+.user-card {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: background-color 0.3s ease;
+}
+.user-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.user-avatar-search {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+.user-info {
+  text-align: right;
+}
+.user-name {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #fff;
+  margin: 0;
+}
+.user-handle {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}

@@ -1,0 +1,166 @@
+body {
+  margin: 0;
+  font-family: 'Tahoma', sans-serif;
+  /* background: linear-gradient(135deg, #1e3c72, #2a5298); <- احذف هذا السطر */
+  color: white; /* يمكنك إبقاء هذا أو حذفه */
+}
+/* شريط التنقل */
+.navbar {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 10px 0;
+  position: fixed;
+  inset-block-start: 0; /* بدل top */
+  inline-size: 100%;   /* بدل width */
+  z-index: 1000;
+}
+
+.navbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.navbar li {
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.navbar li:hover {
+  color: #ffdd57;
+}
+
+/* المحتوى الرئيسي */
+
+h1 {
+  font-size: 2.5rem;
+  margin-block-end: 1rem; /* بدل margin-bottom */
+}
+
+p {
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+/* src/App.css (النسخة النهائية والمحسنة) */
+/* ... (أبقِ على الأنماط القديمة مثل body, h1, p) ... */
+
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* --- Navbar الجديد --- */
+.main-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  height: 65px;
+  background-color: #fff;
+  border-bottom: 1px solid #e2e8f0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  color: #1a202c;
+}
+
+.nav-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1e3c72;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.nav-link-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #4a5568;
+  border-bottom: 3px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+.nav-link-item:hover {
+  color: #1e3c72;
+}
+.nav-link-item.active { /* NavLink يضيف هذا الكلاس تلقائيًا */
+  color: #1e3c72;
+  border-bottom-color: #1e3c72;
+}
+.link-text {
+  font-size: 0.8rem;
+  margin-top: 4px;
+}
+
+/* --- قائمة البروفايل --- */
+.nav-profile-menu {
+  position: relative;
+  cursor: pointer;
+}
+.profile-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #e2e8f0;
+}
+.profile-dropdown {
+  display: none;
+  position: absolute;
+  right: 0; /* <-- التصحيح هنا */
+  top: 120%;
+  background-color: white;
+  min-width: 200px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  z-index: 1;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.nav-profile-menu:hover .profile-dropdown {
+  display: block;
+}
+.dropdown-header {
+  padding: 1rem;
+  border-bottom: 1px solid #e2e8f0;
+  text-align: right;
+}
+.dropdown-header strong { display: block; }
+.dropdown-header small { color: #64748b; }
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 1rem;
+  text-decoration: none;
+  color: #1a202c;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: right;
+  cursor: pointer;
+}
+.dropdown-item:hover {
+  background-color: #f8fafc;
+}
+.dropdown-item.logout { color: #dc2626; }
+
+/* --- منطقة المحتوى الرئيسية --- */
+.main-content-area {
+  padding-top: 65px; /* نفس ارتفاع الـ Navbar */
+  flex-grow: 1;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+}
