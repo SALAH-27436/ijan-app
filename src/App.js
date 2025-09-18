@@ -1,10 +1,8 @@
-// src/App.js (النسخة النهائية والمصححة)
-import React from "react";
-// ===== التصحيح الأول هنا: إضافة Link =====
+// src/App.js (النسخة النهائية مع Navbar متجاوب)
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, NavLink, Link, useNavigate } from "react-router-dom";
-// ======================================
 import { useAuth } from "./context/AuthContext";
-import { Home as HomeIcon, BookCopy, GraduationCap, Rocket, Link2, LogOut, User as UserIcon, Users } from 'lucide-react';
+import { Home as HomeIcon, BookCopy, GraduationCap, Rocket, Link2, LogOut, User as UserIcon, Users, Menu, X } from 'lucide-react';
 import Home from "./pages/Home";
 import LoginPage from './pages/LoginPage';
 import SignupPage from './pages/SignupPage';
@@ -23,11 +21,14 @@ import "./App.css";
 function Navbar() {
   const { user, profile, signOut } = useAuth();
   const navigate = useNavigate();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleSignOut = async () => {
     await signOut();
     navigate('/login');
   };
+
+  const closeMenu = () => setIsMobileMenuOpen(false);
 
   const navLinks = [
     { to: "/", icon: <HomeIcon size={24} />, text: "الرئيسية" },
@@ -39,31 +40,52 @@ function Navbar() {
   ];
 
   return (
-    <nav className="main-navbar">
-      <div className="nav-logo">IJAN</div>
-      <div className="nav-links">
+    <>
+      <nav className="main-navbar">
+        <div className="nav-left">
+          <button className="hamburger-menu" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+            {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+          <div className="nav-logo">IJAN</div>
+        </div>
+
+        <div className="nav-center">
+          <div className="nav-links">
+            {navLinks.map(link => (
+              <NavLink to={link.to} key={link.to} className="nav-link-item" end>
+                {link.icon}
+                <span className="link-text">{link.text}</span>
+              </NavLink>
+            ))}
+          </div>
+        </div>
+
+        <div className="nav-right">
+          <div className="nav-profile-menu">
+            <img src={profile?.avatar_url || '/avatars/default-avatar.png'} alt="Profile" className="profile-avatar" />
+            <div className="profile-dropdown">
+              <div className="dropdown-header">
+                <strong>{profile?.full_name || user?.email}</strong>
+                <small>{user?.email}</small>
+              </div>
+              <Link to={`/profile/${user?.id}`} className="dropdown-item"><UserIcon size={16} /> ملفي الشخصي</Link>
+              <button onClick={handleSignOut} className="dropdown-item logout">
+                <LogOut size={16} /> تسجيل الخروج
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <div className={`mobile-nav-menu ${isMobileMenuOpen ? 'open' : ''}`}>
         {navLinks.map(link => (
-          <NavLink to={link.to} key={link.to} className="nav-link-item" end>
+          <NavLink to={link.to} key={link.to} className="nav-link-item" onClick={closeMenu} end>
             {link.icon}
             <span className="link-text">{link.text}</span>
           </NavLink>
         ))}
       </div>
-      <div className="nav-profile-menu">
-        <img src={profile?.avatar_url || '/avatars/default-avatar.png'} alt="Profile" className="profile-avatar" />
-        <div className="profile-dropdown">
-          <div className="dropdown-header">
-            <strong>{profile?.full_name || user?.email}</strong>
-            <small>{user?.email}</small>
-          </div>
-          <Link to={`/profile/${user?.id}`} className="dropdown-item"><UserIcon size={16} /> ملفي الشخصي</Link>
-          <button onClick={handleSignOut} className="dropdown-item logout">
-            <LogOut size={16} />
-            تسجيل الخروج
-          </button>
-        </div>
-      </div>
-    </nav>
+    </>
   );
 }
 
@@ -71,28 +93,24 @@ function Navbar() {
 function App() {
   const { session } = useAuth();
 
-  // هذا الجزء يعرض فقط صفحات تسجيل الدخول إذا لم يكن المستخدم مسجلاً
   if (!session) {
     return (
       <Router>
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
-          {/* أي رابط آخر سيقوم بإعادة التوجيه إلى تسجيل الدخول */}
           <Route path="*" element={<LoginPage />} />
         </Routes>
       </Router>
     );
   }
 
-  // هذا الجزء يعرض التطبيق الكامل إذا كان المستخدم مسجلاً دخوله
   return (
     <Router>
       <div className="app-layout">
         <Navbar />
         <main className="main-content-area">
           <Routes>
-            {/* ===== التصحيح الثاني هنا: إزالة المسارات المكررة وغير الضرورية ===== */}
             <Route path="/" element={<Home />} />
             <Route path="/profile/:userId" element={<UserProfilePage />} />
             <Route path="/courses" element={<Courses />} />
@@ -103,9 +121,6 @@ function App() {
             <Route path="/courses/:semester/:type" element={<Subjects />} />
             <Route path="/courses/:semester/:type/:subjectSlug" element={<Lessons />} />
             <Route path="/search-users" element={<SearchUsersPage />} />
-            {/* المسارات التالية غير ضرورية لأن `if (!session)` يعالجها */}
-            {/* <Route path="/login" element={<LoginPage />} /> */}
-            {/* <Route path="/signup" element={<SignupPage />} /> */}
           </Routes>
         </main>
       </div>

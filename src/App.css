@@ -1,52 +1,10 @@
+/* src/App.css (النسخة النهائية والمنظمة) */
+
 body {
   margin: 0;
   font-family: 'Tahoma', sans-serif;
-  /* background: linear-gradient(135deg, #1e3c72, #2a5298); <- احذف هذا السطر */
-  color: white; /* يمكنك إبقاء هذا أو حذفه */
+  background-color: #f0f2f5; /* الخلفية العامة للتطبيق */
 }
-/* شريط التنقل */
-.navbar {
-  background: rgba(0, 0, 0, 0.6);
-  padding: 10px 0;
-  position: fixed;
-  inset-block-start: 0; /* بدل top */
-  inline-size: 100%;   /* بدل width */
-  z-index: 1000;
-}
-
-.navbar ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-.navbar li {
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  transition: color 0.3s;
-}
-
-.navbar li:hover {
-  color: #ffdd57;
-}
-
-/* المحتوى الرئيسي */
-
-h1 {
-  font-size: 2.5rem;
-  margin-block-end: 1rem; /* بدل margin-bottom */
-}
-
-p {
-  font-size: 1.2rem;
-  line-height: 1.5;
-}
-/* src/App.css (النسخة النهائية والمحسنة) */
-/* ... (أبقِ على الأنماط القديمة مثل body, h1, p) ... */
 
 .app-layout {
   display: flex;
@@ -54,21 +12,29 @@ p {
   min-height: 100vh;
 }
 
-/* --- Navbar الجديد --- */
+/* --- Navbar --- */
 .main-navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 2rem;
+  padding: 0 1.5rem;
   height: 65px;
   background-color: #fff;
   border-bottom: 1px solid #e2e8f0;
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 0; left: 0; right: 0;
   z-index: 1000;
   color: #1a202c;
+}
+
+.nav-left, .nav-right, .nav-center {
+  display: flex;
+  align-items: center;
+}
+
+.nav-center {
+  flex-grow: 1;
+  justify-content: center;
 }
 
 .nav-logo {
@@ -79,8 +45,6 @@ p {
 
 .nav-links {
   display: flex;
-  justify-content: center;
-  flex-grow: 1;
 }
 
 .nav-link-item {
@@ -93,53 +57,31 @@ p {
   color: #4a5568;
   border-bottom: 3px solid transparent;
   transition: color 0.2s, border-color 0.2s;
+  height: 62px;
 }
-.nav-link-item:hover {
-  color: #1e3c72;
-}
-.nav-link-item.active { /* NavLink يضيف هذا الكلاس تلقائيًا */
-  color: #1e3c72;
-  border-bottom-color: #1e3c72;
-}
-.link-text {
-  font-size: 0.8rem;
-  margin-top: 4px;
-}
+.nav-link-item:hover { color: #1e3c72; }
+.nav-link-item.active { color: #1e3c72; border-bottom-color: #1e3c72; }
+.link-text { font-size: 0.8rem; margin-top: 4px; }
 
-/* --- قائمة البروفايل --- */
-.nav-profile-menu {
-  position: relative;
-  cursor: pointer;
-}
-.profile-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  border: 2px solid #e2e8f0;
-}
+/* --- Profile Menu --- */
+.nav-profile-menu { position: relative; cursor: pointer; }
+.profile-avatar { width: 40px; height: 40px; border-radius: 50%; border: 2px solid #e2e8f0; }
 .profile-dropdown {
   display: none;
   position: absolute;
-  right: 0; /* <-- التصحيح هنا */
+  left: 0; /* Changed from right to left for RTL */
   top: 120%;
   background-color: white;
-  min-width: 200px;
+  min-width: 220px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.1);
   z-index: 1;
   border-radius: 8px;
   overflow: hidden;
 }
-.nav-profile-menu:hover .profile-dropdown {
-  display: block;
-}
-.dropdown-header {
-  padding: 1rem;
-  border-bottom: 1px solid #e2e8f0;
-  text-align: right;
-}
+.nav-profile-menu:hover .profile-dropdown { display: block; }
+.dropdown-header { padding: 1rem; border-bottom: 1px solid #e2e8f0; text-align: right; }
 .dropdown-header strong { display: block; }
 .dropdown-header small { color: #64748b; }
-
 .dropdown-item {
   display: flex;
   align-items: center;
@@ -153,14 +95,56 @@ p {
   text-align: right;
   cursor: pointer;
 }
-.dropdown-item:hover {
-  background-color: #f8fafc;
-}
+.dropdown-item:hover { background-color: #f8fafc; }
 .dropdown-item.logout { color: #dc2626; }
 
-/* --- منطقة المحتوى الرئيسية --- */
+/* --- Hamburger & Mobile Menu --- */
+.hamburger-menu { display: none; }
+.mobile-nav-menu { display: none; }
+
+/* --- Responsive Styles --- */
+@media (max-width: 850px) {
+  .nav-center { display: none; } /* Hide center links on tablets and phones */
+  .hamburger-menu {
+    display: block;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    margin-right: 1rem; /* Space between logo and hamburger */
+  }
+  .nav-left { flex-grow: 1; }
+  
+  .mobile-nav-menu {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 65px;
+    left: 0;
+    right: 0;
+    background: #fff;
+    padding: 1rem;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    transform: translateY(-120%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 999;
+  }
+  .mobile-nav-menu.open { transform: translateY(0); }
+  .mobile-nav-menu .nav-link-item {
+    flex-direction: row;
+    justify-content: flex-start;
+    height: auto;
+    padding: 15px;
+    border-bottom: 1px solid #f1f5f9;
+  }
+  .mobile-nav-menu .link-text { font-size: 1rem; font-weight: bold; }
+}
+
+
+/* --- Main Content Area --- */
 .main-content-area {
-  padding-top: 65px; /* نفس ارتفاع الـ Navbar */
+  padding-top: 65px;
   flex-grow: 1;
   background: linear-gradient(135deg, #1e3c72, #2a5298);
+  /* Default background can be set here, but pages will override it */
 }
