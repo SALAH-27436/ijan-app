@@ -32,6 +32,12 @@
   flex-direction: column;
   gap: 1rem;
 }
+@media (max-width: 480px) {
+  .tab-btn {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+}
 .search-box {
   position: relative;
 }
