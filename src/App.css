@@ -69,7 +69,7 @@ body {
 .profile-dropdown {
   display: none;
   position: absolute;
-  left: 0; /* Changed from right to left for RTL */
+  right: 0; /* Changed from right to left for RTL */
   top: 120%;
   background-color: white;
   min-width: 220px;
