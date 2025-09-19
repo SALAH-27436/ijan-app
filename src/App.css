@@ -101,7 +101,6 @@ body {
 
 /* --- Hamburger & Mobile Menu --- */
 .hamburger-menu { display: none; }
-.mobile-nav-menu { display: none; }
 
 /* --- Responsive Styles --- */
 @media (max-width: 850px) {
@@ -115,32 +114,7 @@ body {
     margin-right: 1rem; /* Space between logo and hamburger */
   }
   .nav-left { flex-grow: 1; }
-  
-  .mobile-nav-menu {
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    top: 65px;
-    left: 0;
-    right: 0;
-    background: #fff;
-    padding: 1rem;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    transform: translateY(-120%);
-    transition: transform 0.3s ease-in-out;
-    z-index: 999;
-  }
-  .mobile-nav-menu.open { transform: translateY(0); }
-  .mobile-nav-menu .nav-link-item {
-    flex-direction: row;
-    justify-content: flex-start;
-    height: auto;
-    padding: 15px;
-    border-bottom: 1px solid #f1f5f9;
-  }
-  .mobile-nav-menu .link-text { font-size: 1rem; font-weight: bold; }
 }
-
 
 /* --- Main Content Area --- */
 .main-content-area {
@@ -148,4 +122,55 @@ body {
   flex-grow: 1;
   background: linear-gradient(135deg, #1e3c72, #2a5298);
   /* Default background can be set here, but pages will override it */
+}
+
+/* --- القائمة الدائرية الجديدة --- */
+.circular-menu-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1001;
+  display: none; /* مخفية على الشاشات الكبيرة */
+}
+@media (max-width: 850px) {
+  .circular-menu-container {
+    display: block;
+  }
+}
+
+.circular-menu {
+  position: relative;
+  width: 200px; /* حجم الدائرة */
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+  transform: scale(0); /* تبدأ مخفية */
+}
+.circular-menu-container.open .circular-menu {
+  transform: scale(1);
+}
+
+.menu-item {
+  position: absolute;
+  left: 0;
+  width: 60px;
+  height: 60px;
+  background: #fff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #1e3c72;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: 0.5s;
+  /* توزيع العناصر على محيط الدائرة */
+  transform: rotate(calc(360deg / 6 * var(--i))) translateX(100px);
+}
+.circular-menu-container.open .menu-item {
+  transform: rotate(calc(360deg / 6 * var(--i))) translateX(100px) rotate(calc(-360deg / 6 * var(--i)));
+}
+.menu-item.active {
+  background: #ffdd57;
 }

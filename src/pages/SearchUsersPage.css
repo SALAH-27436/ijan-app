@@ -53,7 +53,7 @@
   background: rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 12px;
-  padding: 1rem;
+  padding: 0.75rem; /* تقليل الحشو الداخلي */
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -64,8 +64,8 @@
 }
 
 .user-avatar-search {
-  width: 50px;
-  height: 50px;
+  width: 45px; /* أصغر */
+  height: 45px;
   border-radius: 50%;
 }
 .user-info {
@@ -73,12 +73,22 @@
 }
 .user-name {
   font-weight: bold;
-  font-size: 1.1rem;
+  font-size: 1rem; /* تصغير حجم الخط */
   color: #fff;
   margin: 0;
 }
 .user-handle {
-  font-size: 0.9rem;
+  font-size: 0.85rem; /* تنسيق أفضل للهاتف */
   color: rgba(255, 255, 255, 0.7);
   margin: 0;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 480px) {
+  .search-page-container {
+    padding: 1rem; /* تقليل الهوامش */
+  }
+  .user-card {
+    gap: 0.75rem; /* تقليل المسافة بين الصورة والنص */
+  }
 }

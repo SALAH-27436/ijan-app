@@ -77,13 +77,21 @@ function Navbar() {
         </div>
       </nav>
 
-      <div className={`mobile-nav-menu ${isMobileMenuOpen ? 'open' : ''}`}>
-        {navLinks.map(link => (
-          <NavLink to={link.to} key={link.to} className="nav-link-item" onClick={closeMenu} end>
-            {link.icon}
-            <span className="link-text">{link.text}</span>
-          </NavLink>
-        ))}
+      <div className={`circular-menu-container ${isMobileMenuOpen ? 'open' : ''}`}>
+        <div className="circular-menu">
+          {navLinks.map((link, index) => (
+            <NavLink 
+              to={link.to} 
+              key={link.to} 
+              className="menu-item"
+              style={{ '--i': index }} // متغير CSS مخصص للتحريك
+              onClick={closeMenu}
+              end
+            >
+              {link.icon}
+            </NavLink>
+          ))}
+        </div>
       </div>
     </>
   );

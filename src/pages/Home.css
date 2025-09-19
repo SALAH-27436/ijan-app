@@ -292,3 +292,9 @@
 .comment-content { margin: 0.25rem 0 0 0; font-size: 0.95rem; line-height: 1.5; }
 .delete-comment-btn { background: none; border: none; color: #a0aec0; cursor: pointer; }
 .delete-comment-btn:hover { color: #EF4444; }
+/* في نهاية Home.css */
+@media (max-width: 480px) {
+  .home-page-container-unique {
+    padding: 1rem; /* تقليل الهوامش الجانبية للصفحة */
+  }
+}
