@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "IJAN",
+  "name": "IJAN - تطبيق طلبة القانون",
+  "description": "منصة شاملة لطلبة القانون: دروس، خدمات، ومجتمع تفاعلي.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +21,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
+  "theme_color": "#1e3c72",
   "background_color": "#ffffff"
 }

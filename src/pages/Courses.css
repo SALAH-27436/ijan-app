@@ -31,9 +31,10 @@
 .semesters-container {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 1.25rem; /* زيادة المسافة بين الأزرار */
   align-items: center;
-  padding: 0 1rem; /* <-- أضف هذا السطر لإضافة هوامش جانبية على الهاتف */
+  padding: 0 1.5rem; /* إضافة هوامش جانبية كافية */
+  box-sizing: border-box; /* لضمان أن الهوامش لا تزيد من العرض */
 }
 
 .semester-item {
