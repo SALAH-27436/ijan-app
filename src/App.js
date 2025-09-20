@@ -43,7 +43,11 @@ function Navbar() {
     <>
       <nav className="main-navbar">
         <div className="nav-left">
-          <button className="hamburger-menu" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+          {/* زر الهمبرغر */}
+          <button
+            className="hamburger-menu"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
             {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
           <div className="nav-logo">IJAN</div>
@@ -51,8 +55,13 @@ function Navbar() {
 
         <div className="nav-center">
           <div className="nav-links">
-            {navLinks.map(link => (
-              <NavLink to={link.to} key={link.to} className="nav-link-item" end>
+            {navLinks.map((link) => (
+              <NavLink
+                to={link.to}
+                key={link.to}
+                className="nav-link-item"
+                end
+              >
                 {link.icon}
                 <span className="link-text">{link.text}</span>
               </NavLink>
@@ -62,14 +71,26 @@ function Navbar() {
 
         <div className="nav-right">
           <div className="nav-profile-menu">
-            <img src={profile?.avatar_url || '/avatars/default-avatar.png'} alt="Profile" className="profile-avatar" />
+            <img
+              src={profile?.avatar_url || "/avatars/default-avatar.png"}
+              alt="Profile"
+              className="profile-avatar"
+            />
             <div className="profile-dropdown">
               <div className="dropdown-header">
                 <strong>{profile?.full_name || user?.email}</strong>
                 <small>{user?.email}</small>
               </div>
-              <Link to={`/profile/${user?.id}`} className="dropdown-item"><UserIcon size={16} /> ملفي الشخصي</Link>
-              <button onClick={handleSignOut} className="dropdown-item logout">
+              <Link
+                to={`/profile/${user?.id}`}
+                className="dropdown-item"
+              >
+                <UserIcon size={16} /> ملفي الشخصي
+              </Link>
+              <button
+                onClick={handleSignOut}
+                className="dropdown-item logout"
+              >
                 <LogOut size={16} /> تسجيل الخروج
               </button>
             </div>
@@ -77,14 +98,17 @@ function Navbar() {
         </div>
       </nav>
 
-      <div className={`circular-menu-container ${isMobileMenuOpen ? 'open' : ''}`}>
+      {/* ===== القائمة الدائرية الجديدة ===== */}
+      <div
+        className={`circular-menu-container ${isMobileMenuOpen ? "open" : ""}`}
+      >
         <div className="circular-menu">
           {navLinks.map((link, index) => (
-            <NavLink 
-              to={link.to} 
-              key={link.to} 
+            <NavLink
+              to={link.to}
+              key={link.to}
               className="menu-item"
-              style={{ '--i': index }} // متغير CSS مخصص للتحريك
+              style={{ "--i": index }}
               onClick={closeMenu}
               end
             >

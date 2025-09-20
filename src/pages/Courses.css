@@ -1,6 +1,6 @@
 /* src/pages/Courses.css */
 .courses-page {
-  padding: 20px;
+  padding: 1px;
   max-width: 800px;
   margin: 0 auto;
   text-align: center;
@@ -30,19 +30,10 @@
 .semesters-container {
   display: flex;
   flex-direction: column;
+  gap: 25px;
   align-items: center;
-  gap: 20px; /* زيادة المسافة بين السداسيات */
-  padding: 0 1rem; /* مسافة من الجوانب */
+  padding: 0 1rem; /* <-- أضف هذا السطر لإضافة هوامش جانبية على الهاتف */
 }
-
-/* --- Responsive Adjustments --- */
-@media (max-width: 480px) {
-  .semesters-container {
-    gap: 25px; /* مسافة أكبر في الهاتف */
-    padding: 0 1.25rem; /* توسعة طفيفة للجوانب */
-  }
-}
-
 
 .semester-item {
   width: 100%;

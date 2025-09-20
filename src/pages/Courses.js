@@ -60,7 +60,7 @@ export default function Courses() {
       <header className="courses-hero">
         <span className="hero-icon">📚</span>
         <h1>صفحة الدروس</h1>
-        <p>اختر السداسي الذي تريده.</p>
+        <p>اختر السداسي الذي تريده للوصول إلى المواد والموارد.</p>
       </header>
 
       <main className="semesters-container">
