@@ -15,6 +15,7 @@ import Subjects from "./pages/Subjects";
 import Lessons from "./pages/Lessons";
 import UserProfilePage from './pages/UserProfilePage';
 import SearchUsersPage from './pages/SearchUsersPage';
+import Logo from './components/Logo'; // <-- هذا هو المسار الصحيح
 import "./App.css";
 
 // --- مكون Navbar الجديد ---
@@ -50,7 +51,7 @@ function Navbar() {
           >
             {isMobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
-          <div className="nav-logo">IJAN</div>
+          <Logo />
         </div>
 
         <div className="nav-center">
